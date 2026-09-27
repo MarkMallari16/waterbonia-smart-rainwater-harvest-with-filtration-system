@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
-    const [message, setMessage] = useState("Loading...");
-    const [error, setError] = useState("");
+    // const [message, setMessage] = useState("Loading...");
+    // const [error, setError] = useState("");
 
-    useEffect(() => {
-        const fetchTestMessage = async () => {
-            try {
-                const response = await fetch("https://localhost:7105/api/test");
+    // useEffect(() => {
+    //     const fetchTestMessage = async () => {
+    //         try {
+    //             const response = await fetch("https://localhost:7105/api/test");
 
-                if (!response.ok) {
-                    throw new Error("Failed to fetch data.");
-                }
+    //             if (!response.ok) {
+    //                 throw new Error("Failed to fetch data.");
+    //             }
 
-                const data = await response.json();
+    //             const data = await response.json();
 
-                setMessage(data.message);
-            } catch (err) {
-                setError("Something went wrong.")
-            }
-        };
+    //             setMessage(data.message);
+    //         } catch (err) {
+    //             setError("Something went wrong.")
+    //         }
+    //     };
 
-        fetchTestMessage();
-    }, []);
+    //     fetchTestMessage();
+    // }, []);
 
     return (
         <BrowserRouter>
