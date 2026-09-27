@@ -26,7 +26,10 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div>Dashboard</div>
+        <>
+            <div>API Message</div>
+            <h1>{message}</h1>
+        </>
     )
 }
 
