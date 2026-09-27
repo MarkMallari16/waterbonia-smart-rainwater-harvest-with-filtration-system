@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
     const [message, setMessage] = useState("Loading...");
@@ -8,8 +11,8 @@ function App() {
         const fetchTestMessage = async () => {
             try {
                 const response = await fetch("https://localhost:7105/api/test");
-               
-                if (!response.ok){
+
+                if (!response.ok) {
                     throw new Error("Failed to fetch data.");
                 }
 
@@ -25,17 +28,12 @@ function App() {
     }, []);
 
     return (
-        <div>
-            <h1>Waterbonia</h1>
-
-            <p>{message}</p>
-
-            {error && (
-                <p style={{ color: "red" }}>
-                    API Error: {error}
-                </p>
-            )}
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
