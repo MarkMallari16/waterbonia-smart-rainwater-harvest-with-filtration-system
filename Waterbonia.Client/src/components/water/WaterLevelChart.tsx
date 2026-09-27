@@ -23,7 +23,11 @@ const WaterLevelChart = ({ history }: WaterLevelChartProps) => {
                 </div>
                 <div className="flex w-full rounded-lg bg-slate-100 p-1 sm:w-auto" role="group" aria-label="Select history range">
                     {ranges.map((option) => (
-                        <Button key={option} type="button" size="sm" variant={range === option ? "default" : "ghost"} className="h-7 flex-1 px-2 text-xs sm:flex-none" onClick={() => setRange(option)}>{option}</Button>
+                        <Button key={option} type="button" size="sm" variant={range === option ? "default" : "ghost"} 
+                        className={range === option
+                        ? "h-7 flex-1 bg-sky-600 px-2 text-xs hover:bg-sky-700 sm:flex-none"
+                        : "h-7 flex-1 px-2 text-xs sm:flex-none"} 
+                        onClick={() => setRange(option)}>{option}</Button>
                     ))}
                 </div>
             </CardHeader>

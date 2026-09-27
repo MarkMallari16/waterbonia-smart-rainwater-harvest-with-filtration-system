@@ -40,6 +40,7 @@ const navLabelClass = "max-w-40 overflow-hidden whitespace-nowrap transition-[op
 const AppSidebar = () => {
     const location = useLocation()
     const { state } = useSidebar()
+    
     const navLabelStyle = {
         maxWidth: state === "collapsed" ? 0 : 160,
         opacity: state === "collapsed" ? 0 : 1,
