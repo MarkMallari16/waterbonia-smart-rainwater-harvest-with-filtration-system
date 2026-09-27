@@ -2,10 +2,28 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { IconDropletBolt } from "@tabler/icons-react"
+import { useState } from "react"
 
 const Login = () => {
+    const navigate = useNavigate();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const userEmail = "renewaterbonia@gmail.com";
+        const userPass = "passMama";
+
+        if (email == userEmail && password == userPass) {
+            navigate("/dashboard");
+        } else {
+            alert("Invalid email or password");
+        }
+    }
+
     return (
         <div className="flex justify-center items-center min-h-screen">
             <Card className="w-full max-w-md">
@@ -21,37 +39,61 @@ const Login = () => {
                         </CardDescription>
                     </div>
                     <CardContent className="mb-4">
-                        <form>
+                        <form onSubmit={handleLogin}>
                             <div className="flex flex-col gap-6">
+
                                 <div className="grid gap-2">
-                                    <Label htmlFor="email">Email</Label>
+                                    <Label htmlFor="email">
+                                        Email
+                                    </Label>
+
                                     <Input
                                         id="email"
                                         type="email"
                                         placeholder="example@gmail.com"
+                                        value={email}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
                                         required
                                         className="p-4"
                                     />
                                 </div>
 
                                 <div className="grid gap-2">
-                                    <Label htmlFor="password">Password</Label>
+                                    <Label htmlFor="password">
+                                        Password
+                                    </Label>
+
                                     <Input
                                         id="password"
                                         type="password"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
                                         required
                                         className="p-4"
                                     />
                                 </div>
+
+                                <Button
+                                    type="submit"
+                                    className="w-full py-4 bg-sky-500 hover:bg-sky-600"
+                                >
+                                    Login
+                                </Button>
+
+                                <Link
+                                    to="/reset-password"
+                                    className="text-center text-sm underline-offset-4 hover:underline"
+                                >
+                                    Forgot your password?
+                                </Link>
+
                             </div>
                         </form>
                     </CardContent>
-                    <CardFooter className="flex-col bg-white">
-                        <Button variant="default" type="submit" className="w-full py-4 bg-sky-500 hover:bg-sky-600">Login</Button>
-                        <Link to="/reset-password" className="mt-2 text-sm underline-offset-4 hover:underline">
-                            Forgot your password?
-                        </Link>
-                    </CardFooter>
                 </CardHeader>
             </Card>
         </div>
