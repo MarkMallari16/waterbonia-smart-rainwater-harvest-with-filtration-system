@@ -23,6 +23,13 @@ const Login = () => {
             alert("Invalid email or password");
         }
     }
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
+    }
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
+    }
 
     return (
         <div className="flex justify-center items-center min-h-screen">
@@ -52,8 +59,8 @@ const Login = () => {
                                         type="email"
                                         placeholder="Enter your email"
                                         value={email}
-                                        onChange={(e) =>
-                                            setEmail(e.target.value)
+                                        onChange={
+                                            handleEmailChange
                                         }
                                         required
                                         className="p-4"
@@ -70,8 +77,8 @@ const Login = () => {
                                         type="password"
                                         placeholder="Enter your password"
                                         value={password}
-                                        onChange={(e) =>
-                                            setPassword(e.target.value)
+                                        onChange={
+                                            handlePasswordChange
                                         }
                                         required
                                         className="p-4"
