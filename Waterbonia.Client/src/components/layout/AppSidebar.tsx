@@ -48,7 +48,7 @@ const AppSidebar = () => {
     return (
         <>
             <Sidebar collapsible="icon" className="waterbonia-sidebar border-slate-200 bg-white transition-none">
-                <SidebarHeader className="border-b border-slate-100 p-4 group-data-[collapsible=icon]:p-2">
+                <SidebarHeader className="border-b border-slate-100 p-4 group-data-[collapsible=icon]:p-1">
                     <div className="flex items-center gap-3 overflow-hidden group-data-[collapsible=icon]:justify-center">
                         <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-sky-500 text-white shadow-sm shadow-sky-200 group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:rounded-lg">
                             <IconDropletBolt className="size-5" />

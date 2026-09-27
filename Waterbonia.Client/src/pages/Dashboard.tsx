@@ -15,7 +15,6 @@ const Dashboard = () => (
             <div className="mx-auto flex  items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
                 <div className="flex items-center gap-3">
                     <SidebarTrigger className="hidden md:inline-flex" aria-label="Collapse sidebar" />
-
                     <div>
                         <p className="font-heading text-sm font-semibold tracking-tight">WATERBONIA</p>
                         <p className="hidden text-[11px] text-slate-500 sm:block">Smart rainwater management</p>
