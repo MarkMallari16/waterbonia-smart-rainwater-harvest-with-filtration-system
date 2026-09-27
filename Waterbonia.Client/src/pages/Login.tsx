@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
+import { IconDroplet, IconDropletBolt } from "@tabler/icons-react"
 
 const Login = () => {
     return (
@@ -10,7 +11,9 @@ const Login = () => {
             <Card className="w-full max-w-md">
                 <CardHeader>
                     <div className="mb-4 px-4">
-                        <CardTitle>Sign in to WATERBONIA</CardTitle>
+                        <CardTitle className="inline-flex items-center text-blue-500"><span className="text-black pe-2">Sign in to</span> <IconDropletBolt className="h-5 w-5 text-blue-500"/> WATERBONIA
+                        </CardTitle>
+
                         <CardDescription >
                             Enter your email below to login to your account
                         </CardDescription>
