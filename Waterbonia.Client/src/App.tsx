@@ -5,21 +5,23 @@ function App() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        fetch("https://localhost:7105/api/test")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error: ${response.status}`);
+        const fetchTestMessage = async () => {
+            try {
+                const response = await fetch("https://localhost:7105/api/test");
+               
+                if (!response.ok){
+                    throw new Error("Failed to fetch data.");
                 }
 
-                return response.json();
-            })
-            .then(data => {
+                const data = await response.json();
+
                 setMessage(data.message);
-            })
-            .catch(error => {
-                console.error("API Error:", error);
-                setError(error.message);
-            });
+            } catch (err) {
+                setError("Something went wrong.")
+            }
+        };
+
+        fetchTestMessage();
     }, []);
 
     return (
