@@ -1,4 +1,4 @@
-import { IconBell, IconCheck, IconUserCircle } from "@tabler/icons-react"
+import { IconBell, IconCheck } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import OverviewCard from "@/components/dashboard/OverviewCard"
@@ -7,14 +7,15 @@ import RainMonitoring from "@/components/dashboard/RainMonitoring"
 import WaterTankCard from "@/components/dashboard/WaterTankCard"
 import { dashboardData } from "@/components/dashboard/dashboard-data"
 import { SidebarTrigger } from "@/components/ui/sidebar"
-
+import { Avatar, AvatarImage } from "@/components/ui/avatar"
+import Rene from "@/assets/rene.jpg"
 const Dashboard = () => (
     <div className="min-h-screen bg-slate-50/70 text-slate-950">
         <header className="border-b border-slate-200/80 bg-white">
-            <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+            <div className="mx-auto flex  items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
                 <div className="flex items-center gap-3">
                     <SidebarTrigger className="hidden md:inline-flex" aria-label="Collapse sidebar" />
-                    <div className="flex size-9 items-center justify-center rounded-xl bg-sky-500 text-white shadow-sm shadow-sky-200"><span className="font-heading text-sm font-bold">W</span></div>
+
                     <div>
                         <p className="font-heading text-sm font-semibold tracking-tight">WATERBONIA</p>
                         <p className="hidden text-[11px] text-slate-500 sm:block">Smart rainwater management</p>
@@ -23,11 +24,17 @@ const Dashboard = () => (
                 <div className="flex items-center gap-2 sm:gap-4">
                     <span className="hidden items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 sm:inline-flex"><IconCheck className="size-3.5" /> All systems normal</span>
                     <Button variant="ghost" size="icon" aria-label="Notifications"><IconBell /></Button>
-                    <div className="flex items-center gap-2 border-l border-slate-200 pl-2 sm:pl-4"><IconUserCircle className="size-8 text-slate-400" /><span className="hidden text-sm font-medium text-slate-700 sm:block">Mark Morgan</span></div>
+                    <div className="flex items-center gap-2 border-l border-slate-200 pl-2 sm:pl-4">
+                        <Avatar className="size-10 shrink-0">
+                            <AvatarImage src={Rene} alt="Rene Waterbonia" />
+                        </Avatar>
+
+                        <span className="hidden text-sm font-medium text-slate-700 sm:block">Rene Waterbonia</span>
+                    </div>
                 </div>
             </div>
         </header>
-        <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+        <main className="mx-auto  px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
             <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                 <div>
                     <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">System overview</p>
