@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/sidebar"
 import { Avatar, AvatarImage } from "../ui/avatar"
 import Rene from "@/assets/rene.jpg"
+
 const navigationItems = [
     { label: "Dashboard", to: "/dashboard", icon: IconGauge },
     { label: "Water Monitoring", to: "/water-monitoring", icon: IconDroplet },

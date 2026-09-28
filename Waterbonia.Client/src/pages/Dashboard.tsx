@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react"
-import { IconBell, IconCheck } from "@tabler/icons-react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import OverviewCard from "@/components/dashboard/OverviewCard"
@@ -8,10 +6,8 @@ import RecentActivity from "@/components/dashboard/RecentActivity"
 import RainMonitoring from "@/components/dashboard/RainMonitoring"
 import WaterTankCard from "@/components/dashboard/WaterTankCard"
 import { dashboardData } from "@/components/dashboard/dashboard-data"
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import { Avatar, AvatarImage } from "@/components/ui/avatar"
-import Rene from "@/assets/rene.jpg"
 import Header from "@/components/layout/Header"
+import { IconCheck } from "@tabler/icons-react"
 
 const LoadingState = () => (
     <div className="space-y-6" aria-label="Loading dashboard data">

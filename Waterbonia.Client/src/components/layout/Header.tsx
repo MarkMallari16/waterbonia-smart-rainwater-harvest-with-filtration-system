@@ -1,5 +1,5 @@
 
-import { IconBell, IconCheck } from '@tabler/icons-react'
+import { IconBell } from '@tabler/icons-react'
 import { SidebarTrigger } from '../ui/sidebar'
 import { Button } from '../ui/button'
 import { Avatar, AvatarImage } from '../ui/avatar'
