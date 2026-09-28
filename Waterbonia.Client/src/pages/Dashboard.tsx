@@ -11,6 +11,7 @@ import { dashboardData } from "@/components/dashboard/dashboard-data"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import Rene from "@/assets/rene.jpg"
+import Header from "@/components/layout/Header"
 
 const LoadingState = () => (
     <div className="space-y-6" aria-label="Loading dashboard data">
@@ -69,69 +70,48 @@ const Dashboard = () => {
     }, [])
 
     return (
-    <div className="min-h-screen bg-slate-50/70 text-slate-950">
-        <header className="border-b border-slate-200/80 bg-white">
-            <div className="mx-auto flex  items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-                <div className="flex items-center gap-3">
-                    <SidebarTrigger className="hidden md:inline-flex" aria-label="Collapse sidebar" />
+        <div className="min-h-screen bg-slate-50/70 text-slate-950">
+            <Header />
+            <main className="mx-auto  px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+                <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                     <div>
-                        <p className="font-heading text-sm font-semibold tracking-tight">WATERBONIA</p>
-                        <p className="hidden text-[11px] text-slate-500 sm:block">Smart rainwater management</p>
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">System overview</p>
+                        <h1 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">Dashboard</h1>
+                        <p className="mt-2 text-sm text-slate-500">Monitor your rainwater collection system.</p>
                     </div>
+                    <p className="text-xs text-slate-400">Last synced just now</p>
                 </div>
-                <div className="flex items-center gap-2 sm:gap-4">
-                    <span className="hidden items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700 sm:inline-flex"><IconCheck className="size-3.5" /> All systems normal</span>
-                    <Button variant="ghost" size="icon" aria-label="Notifications"><IconBell /></Button>
-                    <div className="flex items-center gap-2 border-l border-slate-200 pl-2 sm:pl-4">
-                        <Avatar className="size-10 shrink-0">
-                            <AvatarImage src={Rene} alt="Rene Waterbonia" />
-                        </Avatar>
-
-                        <span className="hidden text-sm font-medium text-slate-700 sm:block">Rene Waterbonia</span>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <main className="mx-auto  px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-            <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-                <div>
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">System overview</p>
-                    <h1 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">Dashboard</h1>
-                    <p className="mt-2 text-sm text-slate-500">Monitor your rainwater collection system.</p>
-                </div>
-                <p className="text-xs text-slate-400">Last synced just now</p>
-            </div>
-            {loading ? <LoadingState /> : <>
-                <section aria-label="System overview metrics" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-                    {dashboardData.overview.map((metric) => <OverviewCard key={metric.label} metric={metric} />)}
-                </section>
-                <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]">
-                    <WaterTankCard tank={dashboardData.tank} />
-                    <RainMonitoring rain={dashboardData.rain} />
-                </section>
-                <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]">
-                    <Card className="bg-slate-950 text-white shadow-sm ring-slate-900">
-                        <CardContent className="flex h-full flex-col justify-between gap-6 p-5 sm:p-6">
-                            <div className="flex items-start justify-between gap-4">
-                                <div>
-                                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-300">System status</p>
-                                    <h2 className="mt-2 font-heading text-xl font-semibold">Your system is running smoothly</h2>
-                                    <p className="mt-2 max-w-md text-sm leading-6 text-slate-300">Sensors are online and collecting the latest readings from your rainwater system.</p>
+                {loading ? <LoadingState /> : <>
+                    <section aria-label="System overview metrics" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                        {dashboardData.overview.map((metric) => <OverviewCard key={metric.label} metric={metric} />)}
+                    </section>
+                    <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]">
+                        <WaterTankCard tank={dashboardData.tank} />
+                        <RainMonitoring rain={dashboardData.rain} />
+                    </section>
+                    <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]">
+                        <Card className="bg-slate-950 text-white shadow-sm ring-slate-900">
+                            <CardContent className="flex h-full flex-col justify-between gap-6 p-5 sm:p-6">
+                                <div className="flex items-start justify-between gap-4">
+                                    <div>
+                                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-300">System status</p>
+                                        <h2 className="mt-2 font-heading text-xl font-semibold">Your system is running smoothly</h2>
+                                        <p className="mt-2 max-w-md text-sm leading-6 text-slate-300">Sensors are online and collecting the latest readings from your rainwater system.</p>
+                                    </div>
+                                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-300"><IconCheck className="size-5" /></span>
                                 </div>
-                                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-300"><IconCheck className="size-5" /></span>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-5 sm:grid-cols-3">
-                                <div><p className="text-xs text-slate-400">Sensors online</p><p className="mt-1 text-lg font-semibold">5 / 5</p></div>
-                                <div><p className="text-xs text-slate-400">Pump cycles</p><p className="mt-1 text-lg font-semibold">12</p></div>
-                                <div><p className="text-xs text-slate-400">Uptime</p><p className="mt-1 text-lg font-semibold">99.8%</p></div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                    <RecentActivity activity={dashboardData.activity} />
-                </section>
-            </>}
-        </main>
-    </div>
+                                <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-5 sm:grid-cols-3">
+                                    <div><p className="text-xs text-slate-400">Sensors online</p><p className="mt-1 text-lg font-semibold">5 / 5</p></div>
+                                    <div><p className="text-xs text-slate-400">Pump cycles</p><p className="mt-1 text-lg font-semibold">12</p></div>
+                                    <div><p className="text-xs text-slate-400">Uptime</p><p className="mt-1 text-lg font-semibold">99.8%</p></div>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <RecentActivity activity={dashboardData.activity} />
+                    </section>
+                </>}
+            </main>
+        </div>
     )
 }
 
