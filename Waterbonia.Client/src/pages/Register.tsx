@@ -113,7 +113,7 @@ const Register = () => {
                         </div>
                     </form>
 
-                    <div className="flex-col gap-2 px-6 pb-4 pt-4 text-center sm:px-8">
+                    <div className="flex justify-center gap-1  px-6 pb-4 pt-4 text-center sm:px-8">
                         <p className="text-sm text-slate-600">Already have an account?</p>
                         <Link to="/login" className="text-sm text-sky-600 underline-offset-4 hover:underline">Sign in</Link>
                     </div>
