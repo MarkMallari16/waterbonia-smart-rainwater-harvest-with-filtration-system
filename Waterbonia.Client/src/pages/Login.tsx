@@ -7,8 +7,8 @@ import { IconDropletBolt } from "@tabler/icons-react"
 import { Eye, EyeOff } from "lucide-react"
 import { useState } from "react"
 import { Separator } from "@/components/ui/separator"
-import { signInWithGoogle } from "@/services/authService"
 import googleLogo from "@/assets/google.png"
+import { supabase } from "@/lib/supabase"
 
 const Login = () => {
     const navigate = useNavigate();
@@ -17,7 +17,9 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState("")
-    const [isGoogleSubmitting, setIsGoogleSubmitting] = useState(false)
+    const [isGoogleSubmitting] = useState(false)
+
+
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -30,6 +32,7 @@ const Login = () => {
             setError("Invalid email or password");
         }
     }
+
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
     }
@@ -40,14 +43,25 @@ const Login = () => {
     }
 
     const handleGoogleSignIn = async () => {
-        setError("")
-        setIsGoogleSubmitting(true)
-        try {
-            await signInWithGoogle()
-        } catch (googleError) {
-            setError(googleError instanceof Error ? googleError.message : "Unable to connect to Google. Please try again.")
-        } finally {
-            setIsGoogleSubmitting(false)
+        // setError("")
+        // setIsGoogleSubmitting(true)
+        // try {
+        //     await signInWithGoogle()
+        // } catch (googleError) {
+        //     setError(googleError instanceof Error ? googleError.message : "Unable to connect to Google. Please try again.")
+        // } finally {
+        //     setIsGoogleSubmitting(false)
+        // }
+
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+                redirectTo: `${window.location.origin}/auth/callback`,
+            }
+        });
+
+        if (error) {
+            console.error(error);
         }
     }
 
