@@ -104,7 +104,7 @@ const Login = () => {
                                             required
                                             className="p-4 pr-11"
                                         />
-                                        <Button type="button" variant="ghost" size="icon" className="absolute right-1 top-1/2 -translate-y-1/2" onClick={() => setShowPassword((visible) => !visible)} aria-label={showPassword ? "Hide password" : "Show password"}>
+                                        <Button type="button" variant="ghost" size="icon" className="absolute right-1" onClick={() => setShowPassword((visible) => !visible)} aria-label={showPassword ? "Hide password" : "Show password"}>
                                             {showPassword ? <EyeOff /> : <Eye />}
                                         </Button>
                                     </div>

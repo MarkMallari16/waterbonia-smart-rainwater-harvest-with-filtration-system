@@ -83,7 +83,7 @@ const Register = () => {
                                 <Label htmlFor="register-password">Password</Label>
                                 <div className="relative">
                                     <Input id="register-password" type={showPassword ? "text" : "password"} placeholder="Enter your password" autoComplete="new-password" value={password} onChange={(event) => setPassword(event.target.value)} disabled={disabled} className="p-4 pr-11" />
-                                    <Button type="button" variant="ghost" size="icon" className="absolute right-1 top-1/2 -translate-y-1/2" onClick={() => setShowPassword((visible) => !visible)} aria-label={showPassword ? "Hide password" : "Show password"}>
+                                    <Button type="button" variant="ghost" size="icon" className="absolute right-1" onClick={() => setShowPassword((visible) => !visible)} aria-label={showPassword ? "Hide password" : "Show password"}>
                                         {showPassword ? <EyeOff /> : <Eye />}
                                     </Button>
                                 </div>
@@ -92,7 +92,7 @@ const Register = () => {
                                 <Label htmlFor="confirm-password">Confirm Password</Label>
                                 <div className="relative">
                                     <Input id="confirm-password" type={showConfirmPassword ? "text" : "password"} placeholder="Confirm your password" autoComplete="new-password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} disabled={disabled} className="p-4 pr-11" />
-                                    <Button type="button" variant="ghost" size="icon" className="absolute right-1 top-1/2 -translate-y-1/2" onClick={() => setShowConfirmPassword((visible) => !visible)} aria-label={showConfirmPassword ? "Hide password" : "Show password"}>
+                                    <Button type="button" variant="ghost" size="icon" className="absolute right-1" onClick={() => setShowConfirmPassword((visible) => !visible)} aria-label={showConfirmPassword ? "Hide password" : "Show password"}>
                                         {showConfirmPassword ? <EyeOff /> : <Eye />}
                                     </Button>
                                 </div>
