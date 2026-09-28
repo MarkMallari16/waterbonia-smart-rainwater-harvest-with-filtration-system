@@ -86,7 +86,7 @@ const Dashboard = () => {
                         <RainMonitoring rain={dashboardData.rain} />
                     </section>
                     <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]">
-                        <Card className="bg-slate-950 text-white shadow-sm ring-slate-900">
+                        <Card className="bg-slate-950 text-white shadow-sm ">
                             <CardContent className="flex h-full flex-col justify-between gap-6 p-5 sm:p-6">
                                 <div className="flex items-start justify-between gap-4">
                                     <div>

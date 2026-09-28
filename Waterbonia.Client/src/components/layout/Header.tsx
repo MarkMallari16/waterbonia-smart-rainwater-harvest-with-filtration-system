@@ -24,7 +24,7 @@ const Header = () => {
                             <AvatarImage src={Rene} alt="Rene Waterbonia" />
                         </Avatar>
 
-                        <span className="hidden text-sm font-medium text-slate-700 sm:block">Rene Waterbonia</span>
+                        <span className="hidden text-sm font-medium text-slate-700 md:block">Rene Waterbonia</span>
                     </div>
                 </div>
             </div>

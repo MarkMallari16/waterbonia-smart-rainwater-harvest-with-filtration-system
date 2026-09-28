@@ -21,7 +21,7 @@ const WaterLevelChart = ({ history }: WaterLevelChartProps) => {
                     <CardTitle className="font-sans text-base font-semibold text-slate-950">Water Level History</CardTitle>
                     <p className="mt-1 text-xs text-slate-500">Track tank level changes over time</p>
                 </div>
-                <div className="flex w-full rounded-lg bg-slate-100 p-1 sm:w-auto" role="group" aria-label="Select history range">
+                <div className="flex w-full rounded-lg border-slate-200 bg-slate-50 p-1 sm:w-auto" role="group" aria-label="Select history range">
                     {ranges.map((option) => (
                         <Button key={option} type="button" size="sm" variant={range === option ? "default" : "ghost"} 
                         className={range === option

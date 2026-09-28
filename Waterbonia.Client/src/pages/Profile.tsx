@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import Header from "@/components/layout/Header"
 import { Label } from "@/components/ui/label"
 
-const currentEmail = "mark@example.com"
+const currentEmail = "renewaterbonia@gmail.com"
 
 const Profile = () => {
   const [dialogOpen, setDialogOpen] = useState(false)
