@@ -20,7 +20,6 @@ const Login = () => {
     const [isGoogleSubmitting] = useState(false)
 
 
-
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const userEmail = "renewaterbonia@gmail.com";
@@ -58,11 +57,14 @@ const Login = () => {
             options: {
                 redirectTo: `${window.location.origin}/auth/callback`,
             }
+
         });
 
         if (error) {
             console.error(error);
         }
+
+        console.log(window.location.origin)
     }
 
     return (
