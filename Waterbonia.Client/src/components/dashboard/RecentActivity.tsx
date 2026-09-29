@@ -37,7 +37,7 @@ const RecentActivity = ({ activity }: { activity: DashboardData["activity"] }) =
       <IconClock className="size-4 text-slate-400" />
     </CardHeader>
     <CardContent className="p-5 sm:p-6">
-      <ul className="divide-y divide-slate-100">
+      <ul className="divide-y divide-slate-100 dark:divide-slate-600/35">
         {activity.map((item) => <ActivityRow key={`${item.title}-${item.time}`} item={item} />)}
       </ul>
       <button type="button" className="mt-5 inline-flex items-center gap-1 text-xs font-medium text-sky-700 hover:text-sky-800">View all activity <IconArrowUpRight className="size-3.5" /></button>

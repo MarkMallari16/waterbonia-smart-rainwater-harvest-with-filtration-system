@@ -63,8 +63,6 @@ const Login = () => {
         if (error) {
             console.error(error);
         }
-
-        console.log(window.location.origin)
     }
 
     return (
