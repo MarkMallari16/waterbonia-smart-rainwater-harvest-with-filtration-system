@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import { IconAlertTriangle, IconWifi } from "@tabler/icons-react"
-import { RefreshCw } from "lucide-react"
-import { SidebarTrigger } from "@/components/ui/sidebar"
+import { IconAlertTriangle } from "@tabler/icons-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -108,7 +106,7 @@ const WaterMonitoring = () => {
                     </div>
                 </div>
             </header> */}
-            <Header/>
+            <Header />
             <main className="mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
                 <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                     <div>
