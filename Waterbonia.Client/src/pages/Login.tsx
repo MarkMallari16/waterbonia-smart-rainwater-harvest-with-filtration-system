@@ -17,7 +17,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState("")
-    const [isGoogleSubmitting] = useState(false)
+    const [isGoogleSubmitting, setIsGoogleSubmitting] = useState(false)
 
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,6 +42,7 @@ const Login = () => {
     }
 
     const handleGoogleSignIn = async () => {
+        setIsGoogleSubmitting(true);
         const { error } = await supabase.auth.signInWithOAuth({
             provider: "google",
             options: {
@@ -52,6 +53,7 @@ const Login = () => {
 
         if (error) {
             console.error(error);
+            setIsGoogleSubmitting(false);
         }
     }
 
@@ -117,7 +119,6 @@ const Login = () => {
                                 {error && <p className="text-sm text-destructive" role="alert">{error}</p>}
                                 <Button
                                     type="submit"
-                                    disabled={isGoogleSubmitting}
                                     className="w-full bg-sky-500 py-4 hover:bg-sky-600"
                                 >
                                     Login
@@ -138,7 +139,7 @@ const Login = () => {
                                         alt="Google"
                                         className="size-4"
                                     />
-                                    {isGoogleSubmitting ? "Connecting to Google..." : "Continue with Google"}
+                                    {isGoogleSubmitting ? "Signing in with Google..." : "Continue with Google"}
                                 </Button>
 
                                 <p className="text-center text-sm text-slate-600">Don&apos;t have an account? <Link to="/register" className="text-sky-600 underline-offset-4 hover:underline">Create an account</Link></p>
