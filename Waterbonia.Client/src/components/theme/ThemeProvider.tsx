@@ -5,7 +5,7 @@ import { ThemeContext } from "./theme-context"
 import type { Theme } from "./theme-context"
 
 const THEME_STORAGE_KEY = "waterbonia-theme"
-const AUTHENTICATION_ROUTES = new Set(["/", "/login", "/register", "/auth/callback", "/reset-password"])
+const AUTHENTICATION_ROUTES = new Set(["/", "/login", "/register", "/auth/callback", "/reset-password", "/verify-email"])
 
 const getInitialTheme = (): Theme => {
     if (typeof window === "undefined") return "light"
