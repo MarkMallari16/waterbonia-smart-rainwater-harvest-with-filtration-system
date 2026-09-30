@@ -13,6 +13,7 @@ import CollectionStatusCard from "@/components/water/CollectionStatusCard"
 import SensorStatusList from "@/components/water/SensorStatusList"
 import { fetchWaterData } from "@/services/waterService"
 import { TURBIDITY_THRESHOLDS, type WaterMonitoringData, type WaterLevelStatus, type WaterQualityStatus } from "@/types/water"
+import Header from "@/components/layout/Header"
 
 const getLevelStatus = (level: number): WaterLevelStatus => {
     if (level <= 20) return "Low"
@@ -64,7 +65,7 @@ const WaterMonitoring = () => {
 
     return (
         <div className="min-h-screen bg-slate-50/70 text-slate-950">
-            <header className="border-b border-slate-200/80 bg-white">
+            {/* <header className="border-b border-slate-200/80 bg-white">
                 <div className="mx-auto flex items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
                     <div className="flex items-center gap-3">
                         <SidebarTrigger
@@ -106,8 +107,8 @@ const WaterMonitoring = () => {
                         </Button>
                     </div>
                 </div>
-            </header>
-
+            </header> */}
+            <Header/>
             <main className="mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
                 <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                     <div>

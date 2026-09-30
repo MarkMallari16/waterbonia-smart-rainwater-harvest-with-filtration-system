@@ -16,7 +16,6 @@ const DashboardLayout = () => {
     return (
         <SidebarProvider>
             <AppSidebar />
-
             <SidebarInset className="min-w-0 bg-slate-50/70">
                 <div className="flex items-center border-b border-slate-200/80 bg-white px-4 py-2 md:hidden">
                     <SidebarTrigger />
@@ -24,7 +23,6 @@ const DashboardLayout = () => {
                         WATERBONIA
                     </span>
                 </div>
-
                 <Outlet />
             </SidebarInset>
         </SidebarProvider>

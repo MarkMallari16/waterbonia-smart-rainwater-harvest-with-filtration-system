@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -16,28 +16,26 @@ import AuthCallback from "./pages/auth/AuthCallback";
 function App() {
 
     return (
-        <BrowserRouter>
-            <Routes>
-                {/*Authentication */}
-                <Route path="/" element={<Login />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/auth/callback" element={<AuthCallback />} />
-                <Route path="/reset-password" element={<ResetPassword />} />
+        <Routes>
+            {/*Authentication */}
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
-                {/* Dashboard */}
-                <Route element={<DashboardLayout />}>
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/water-monitoring" element={<WaterMonitoring />} />
-                    <Route path="/rainfall" element={<Rainfall />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/pump-control" element={<PumpControl />} />
-                    <Route path="/water-quality" element={<WaterQuality />} />
-                    <Route path="/settings" element={<Settings />} />
-                </Route>
-            </Routes>
+            {/* Dashboard */}
+            <Route element={<DashboardLayout />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/water-monitoring" element={<WaterMonitoring />} />
+                <Route path="/rainfall" element={<Rainfall />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/pump-control" element={<PumpControl />} />
+                <Route path="/water-quality" element={<WaterQuality />} />
+                <Route path="/settings" element={<Settings />} />
+            </Route>
+        </Routes>
 
-        </BrowserRouter>
     );
 }
 

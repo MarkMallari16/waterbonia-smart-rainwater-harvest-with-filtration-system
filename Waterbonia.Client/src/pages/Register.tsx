@@ -69,7 +69,7 @@ const Register = () => {
                         <IconDropletBolt className="mr-2 size-6" />
                         WATERBONIA
                     </CardTitle>
-                    <CardDescription className="mt-3 text-sm leading-6">Create your Waterbonia account</CardDescription>
+                    <CardDescription className="text-sm leading-6">Create your Waterbonia account</CardDescription>
                     <h1 className="font-heading text-2xl font-semibold tracking-tight text-slate-950">Create Account</h1>
                 </CardHeader>
                 <CardContent className="px-6 sm:px-8">

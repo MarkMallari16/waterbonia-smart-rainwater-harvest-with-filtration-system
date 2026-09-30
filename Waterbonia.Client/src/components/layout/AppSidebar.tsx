@@ -101,7 +101,7 @@ const AppSidebar = () => {
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                         <SidebarMenuItem>
-                            <SidebarMenuButton render={<NavLink to="/" />} tooltip="Logout" className="text-slate-600 hover:bg-rose-50 hover:text-rose-700 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:gap-0">
+                            <SidebarMenuButton render={<NavLink to="/" />} tooltip="Logout" className="text-slate-600 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:gap-0">
                                 <IconLogout />
                                 <span className={navLabelClass} style={navLabelStyle}>Logout</span>
                             </SidebarMenuButton>
