@@ -42,16 +42,6 @@ const Login = () => {
     }
 
     const handleGoogleSignIn = async () => {
-        // setError("")
-        // setIsGoogleSubmitting(true)
-        // try {
-        //     await signInWithGoogle()
-        // } catch (googleError) {
-        //     setError(googleError instanceof Error ? googleError.message : "Unable to connect to Google. Please try again.")
-        // } finally {
-        //     setIsGoogleSubmitting(false)
-        // }
-
         const { error } = await supabase.auth.signInWithOAuth({
             provider: "google",
             options: {

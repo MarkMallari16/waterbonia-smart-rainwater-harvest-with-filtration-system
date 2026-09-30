@@ -8,6 +8,7 @@ import WaterTankCard from "@/components/dashboard/WaterTankCard"
 import { dashboardData } from "@/components/dashboard/dashboard-data"
 import Header from "@/components/layout/Header"
 import { IconCheck } from "@tabler/icons-react"
+import { supabase } from "@/lib/supabase"
 
 const LoadingState = () => (
     <div className="space-y-6" aria-label="Loading dashboard data">
@@ -60,8 +61,19 @@ const LoadingState = () => (
 const Dashboard = () => {
     const [loading, setLoading] = useState(true)
 
+    const fetchCurrentUser = async () => {
+        const {
+            data: { user }
+        } = await supabase.auth.getUser();
+
+        if (!user) return
+
+        console.log(user.identities)
+    }
     useEffect(() => {
         const initialLoad = window.setTimeout(() => setLoading(false), 500)
+        fetchCurrentUser();
+
         return () => window.clearTimeout(initialLoad)
     }, [])
 
