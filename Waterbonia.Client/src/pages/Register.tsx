@@ -8,8 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
-import { registerWithEmail, signInWithGoogle } from "@/services/authService"
-import googleLogo from "@/assets/google.png"
+import { registerWithEmail } from "@/services/authService"
+import GoogleButton from "@/components/auth/GoogleButton"
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -22,7 +22,6 @@ const Register = () => {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const [error, setError] = useState("")
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isGoogleSubmitting, setIsGoogleSubmitting] = useState(false)
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -39,7 +38,7 @@ const Register = () => {
         setIsSubmitting(true)
         try {
             await registerWithEmail(trimmedEmail, password)
-            navigate("/dashboard")
+            navigate("/verify-email")
         } catch (registrationError) {
             setError(registrationError instanceof Error ? registrationError.message : "Unable to create your account. Please check your information and try again.")
         } finally {
@@ -47,19 +46,7 @@ const Register = () => {
         }
     }
 
-    const handleGoogleSignIn = async () => {
-        setError("")
-        setIsGoogleSubmitting(true)
-        try {
-            await signInWithGoogle()
-        } catch (googleError) {
-            setError(googleError instanceof Error ? googleError.message : "Unable to connect to Google. Please try again.")
-        } finally {
-            setIsGoogleSubmitting(false)
-        }
-    }
-
-    const disabled = isSubmitting || isGoogleSubmitting
+    const disabled = isSubmitting
 
     return (
         <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8">
@@ -102,14 +89,7 @@ const Register = () => {
                                 {isSubmitting ? "Creating account..." : "Create Account"}
                             </Button>
                             <div className="flex items-center gap-3 text-xs text-slate-500"><Separator className="flex-1" />or continue with<Separator className="flex-1" /></div>
-                            <Button type="button" variant="outline" disabled={disabled} onClick={() => void handleGoogleSignIn()} className="w-full py-4">
-                                <img
-                                    src={googleLogo}
-                                    alt="Google"
-                                    className="size-4"
-                                />
-                                {isGoogleSubmitting ? "Connecting to Google..." : "Continue with Google"}
-                            </Button>
+                            <GoogleButton />
                         </div>
                     </form>
 

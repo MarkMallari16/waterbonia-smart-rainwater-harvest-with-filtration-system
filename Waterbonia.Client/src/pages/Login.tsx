@@ -7,7 +7,7 @@ import { IconDropletBolt } from "@tabler/icons-react"
 import { Eye, EyeOff } from "lucide-react"
 import { useState } from "react"
 import { Separator } from "@/components/ui/separator"
-import googleLogo from "@/assets/google.png"
+import GoogleButton from "@/components/auth/GoogleButton"
 import { supabase } from "@/lib/supabase"
 
 const Login = () => {
@@ -17,19 +17,26 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState("")
-    const [isGoogleSubmitting, setIsGoogleSubmitting] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
 
-    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const userEmail = "renewaterbonia@gmail.com";
-        const userPass = "passMama";
+        if (isSubmitting) return
 
-        if (email == userEmail && password == userPass) {
+        setError("")
+        setIsSubmitting(true)
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+            email: email.trim(),
+            password,
+        })
+
+        if (!signInError) {
             navigate("/dashboard");
         } else {
             setError("Invalid email or password");
         }
+        setIsSubmitting(false)
     }
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,22 +46,6 @@ const Login = () => {
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
         if (error) setError("")
-    }
-
-    const handleGoogleSignIn = async () => {
-        setIsGoogleSubmitting(true);
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: "google",
-            options: {
-                redirectTo: `${window.location.origin}/auth/callback`,
-            }
-
-        });
-
-        if (error) {
-            console.error(error);
-            setIsGoogleSubmitting(false);
-        }
     }
 
     return (
@@ -119,9 +110,10 @@ const Login = () => {
                                 {error && <p className="text-sm text-destructive" role="alert">{error}</p>}
                                 <Button
                                     type="submit"
+                                    disabled={isSubmitting}
                                     className="w-full bg-sky-500 py-4 hover:bg-sky-600"
                                 >
-                                    Login
+                                    {isSubmitting ? "Signing in..." : "Login"}
                                 </Button>
 
                                 <Link
@@ -133,14 +125,7 @@ const Login = () => {
 
                                 <div className="flex items-center gap-3 text-xs text-slate-500"><Separator className="flex-1" />or continue with<Separator className="flex-1" /></div>
 
-                                <Button type="button" variant="outline" disabled={isGoogleSubmitting} onClick={() => void handleGoogleSignIn()} className="w-full py-4">
-                                    <img
-                                        src={googleLogo}
-                                        alt="Google"
-                                        className="size-4"
-                                    />
-                                    {isGoogleSubmitting ? "Signing in with Google..." : "Continue with Google"}
-                                </Button>
+                                <GoogleButton />
 
                                 <p className="text-center text-sm text-slate-600">Don&apos;t have an account? <Link to="/register" className="text-sky-600 underline-offset-4 hover:underline">Create an account</Link></p>
 
